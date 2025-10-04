@@ -3,7 +3,7 @@ import sys
 
 
 def run_task2() -> None:
-    # Демонстрація для Trie (Завдання 2)
+    # Завдання 2 (Trie): демо з assert'ами
     from src.task2_trie.demo import run_demo
 
     run_demo()
@@ -11,15 +11,11 @@ def run_task2() -> None:
 
 
 def run_task1() -> None:
-    # Плейсхолдер на майбутнє (щоб програма не падала)
-    try:
-        from src.task1_maxflow.solver import run_solver  # noqa: F401
-    except Exception:
-        print("[task1] Ще не реалізовано. Повернемось після завершення Завдання 2.")
-        return
-    # Якщо ти вже додав solver — можеш розкоментити нижче:
-    # mf, path = run_solver()
-    # print(f"[task1] Max flow: {mf}. CSV: {path}")
+    # Завдання 1 (Max Flow): запуск розрахунку та збереження CSV
+    from src.task1_maxflow.solver import run_solver
+
+    mf, path = run_solver()
+    print(f"[task1] Max flow: {mf}. CSV: {path}")
 
 
 def main(argv: list[str]) -> int:
@@ -28,10 +24,10 @@ def main(argv: list[str]) -> int:
         return 2
 
     cmd = argv[1]
-    if cmd == "task2":
-        run_task2()
-    else:
+    if cmd == "task1":
         run_task1()
+    else:
+        run_task2()
     return 0
 
 
